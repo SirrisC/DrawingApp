@@ -22,9 +22,10 @@ WHITE = (255, 255, 255)
 
 # Define screen size in terms of pixel count.
 SCREEN_SIZE_X = 640
-SCREEN_SIZE_Y = 480
+SCREEN_SIZE_Y = 580
 SCREEN_SIZE = (SCREEN_SIZE_X, SCREEN_SIZE_Y)
 SCREEN_CENTER = (SCREEN_SIZE_X // 2, SCREEN_SIZE_Y // 2)
+TOOLBAR_HEIGHT = 100
 
 # Initialize pygame
 pygame.init()
@@ -84,7 +85,46 @@ while is_running:
             # If the key "DELETE" is pressed
             if event.key == pygame.K_DELETE:
                 screen.fill(WHITE)
-
+        
+        #Buttons for the Toolbar
+        class Button:
+            def __init__(self, x, y, width, height, color, text=None, text_color = BLACK):
+                self.x = x
+                self.y = y
+                self.width = width
+                self.height = height
+                self.color = color
+                self.text = text
+                self.text_color = text_color
+            def draw(self, screen):
+                pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))
+                pygame.draw.react(screen, BLACK, (self.x, self.y, self.width, self.height), 2)
+                if self.text:
+                    button_font = pygame.font.SysFont("calibri")
+                    text_surface = button.font.render(self.text, 1, self.text_color)
+                    screen.blit(text_surface, (self.x + self.width/2 - text_surface.get_width()/2)
+             def clicked(self, pos):
+                x,y = pos
+                if not (x >= self.x and x <= self.x + self.width):
+                    return False
+                if not (y >= self.y and y <= self.y + self.height):
+                    return False
+                return True
+             button_y = SCREEN_SIZE Y - TOOLBAR_HEIGHT/2 - 25
+             buttons = [
+                 Button(5, button_y, 20, 20, BLACK)
+                 Button(30, button_y, 20, 20, RED)
+                 Button(55, button_y, 20, 20, BLUE)
+                 Button(80, button_y, 20, 20, GREEN)
+                 Button(105, button_y, 20, 20, YELLOW)
+                 Button(130, button_y, 20, 20, MAGENTA)
+                 Button(155, button_y, 20, 20, CYAN)
+                 Button(170, button_y, 20, 20, WHITE)
+                 Button(195, button_y, 20, 20, WHITE, "Erase", BLACK)
+                 Button(220, button_y, 20, 20, WHITE, "Clear", BLACK)
+                 Button(245, button_y, 20, 20, BLACK)
+             for button in buttons:
+                 button.draw(screen)
     # Put the drawing into display
     pygame.display.flip()
 
