@@ -3,7 +3,6 @@
 
 #This is a drawing app with a uiManagement system
 #each thing which is drawn (inlcuding freedraw elements) is put into a uiElement which is in turn placed into a uiGroup
-# press w on the keyboard to clear the drawings
 # press s to open the brush Size Popup (NOT FINISHED YET)
 
 # Have fun :)
