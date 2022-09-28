@@ -129,7 +129,9 @@ def main():
                     #textElemRect = textElem.get_rect()
                     #textElemRect.center = (x+40,y+7)
 
-
+            #Making functionality which W clears the board
+            if pygame.K_w:
+                screen.fill(WHITE)
             
             #Checks for mouse clicks
             if event.type == pygame.MOUSEBUTTONDOWN:
